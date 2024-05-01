@@ -1,0 +1,44 @@
+---
+import "./global.scss";
+import BottomBar from "../components/BottomBar/BottomBar.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="root" x-data>
+      <div class="page" x-show="!$store.page.isLoading"><slot /></div>
+      <div class="page" x-show="$store.page.isLoading">
+        loading
+      </div>
+      <BottomBar />
+    </div>
+    <script src="https://unpkg.com/htmx.org@1"></script>
+    <script
+      src="https://kit.fontawesome.com/89c6b9d148.js"
+      crossorigin="anonymous"></script>
+  </body>
+</html>
+
+<script>
+  document.addEventListener("alpine:init", () => {
+    Alpine.store("page", {
+      isLoading: false,
+      setIsLoading(value: boolean) {
+        this.isLoading = value;
+      },
+    });
+  });
+</script>

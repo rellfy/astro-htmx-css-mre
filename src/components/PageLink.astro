@@ -1,0 +1,20 @@
+---
+interface Props {
+  to: string;
+  className?: string;
+}
+
+const { to, className } = Astro.props;
+---
+
+<span
+  class={className}
+  hx-get=`/${to}`
+  hx-swap="none"
+  x-on:click=`
+    $store.page.setIsLoading(true);
+    window.history.pushState(null, window.document.title, '/${to}');
+  `
+>
+  <slot />
+</span>

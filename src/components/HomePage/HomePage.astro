@@ -1,0 +1,24 @@
+---
+import styles from "./HomePage.module.scss";
+import ExternalLink from "../ExternalLink/ExternalLink.astro";
+---
+
+<div
+  id="page-content"
+  class={styles.root}
+  hx-swap-oob="true"
+  x-init="$store.page.setIsLoading(false)"
+>
+  <p>
+    to reproduce the issue while hosting via `astro dev`, go to a different page
+    and then reload the page -- the issue is that styles are only applied after
+    a full page reload.
+  </p>
+  <p>
+    compare this to the correct behaviour of `astro build && astro preview.
+  </p>
+  <p>
+    link to this MRE repo
+    <ExternalLink to="https://github.com/rellfy/astro-htmx-css-mre">here</ExternalLink>
+  </p>
+</div>

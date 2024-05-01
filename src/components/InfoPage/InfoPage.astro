@@ -1,0 +1,11 @@
+---
+import styles from "./InfoPage.module.scss";
+---
+
+<div
+  id="page-content"
+  hx-swap-oob="true"
+  x-init="$store.page.setIsLoading(false)"
+>
+  <p class={styles.shiny}>shiny</p>
+</div>

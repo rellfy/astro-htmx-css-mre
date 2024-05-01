@@ -1,0 +1,24 @@
+---
+import styles from "./BottomBar.module.scss";
+import classNames from "classnames";
+import PageLink from "../PageLink.astro";
+---
+
+<div class={styles.root}>
+  <div class={styles.wrapper}>
+    <PageLink to="info" className={styles.button}>
+      <i class={classNames("fa-solid fa-circle-info", styles.icon)}></i>
+    </PageLink>
+    <span
+      class={styles.button}
+      hx-get="/"
+      hx-swap="none"
+      x-on:click="
+        $store.page.setIsLoading(true);
+        window.history.pushState(null, window.document.title, '/');
+      "
+    >
+      <i class={classNames("fa-solid fa-house", styles.icon)}></i>
+    </span>
+  </div>
+</div>

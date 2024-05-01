@@ -1,0 +1,13 @@
+---
+import styles from "./ExternalLink.module.scss";
+
+interface Props {
+  to: string;
+}
+
+const { to } = Astro.props;
+---
+
+<a href={to} target="_blank" class={styles.shiny}>
+  <slot />
+</a>
