@@ -16,7 +16,6 @@ export default defineConfig({
   },
   vite: {
     build: {
-      assetsInlineLimit: 1028,
       // This gives the correct behaviour if setting it to false, but only
       // fixes it for `astro build && astro preview` and not for `astro dev`.
       cssCodeSplit: false
